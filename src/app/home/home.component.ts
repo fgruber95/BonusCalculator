@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'public-home',
@@ -12,6 +10,7 @@ export class HomeComponent {
   affiliation: number;
   specialEmployee: boolean;
   bonus: string;
+  input: { inputObj: { affiliation: number; specialEmployee: boolean; }; };
 
   constructor() {
    this.bonus = "Please click on Calculate!";

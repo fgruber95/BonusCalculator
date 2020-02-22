@@ -5,7 +5,7 @@ import { CoreModule } from './core/core.module';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, CoreModule, TranslateModule.forRoot()],
+      imports: [RouterTestingModule, CoreModule],
       declarations: [AppComponent],
     }).compileComponents();
   }));
