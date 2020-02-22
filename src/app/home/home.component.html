@@ -14,7 +14,10 @@
         <label>Special employee:</label>
         <input type="checkbox" [(ngModel)]="specialEmployee" [ngModelOptions]="{standalone: true}" />
 
-        <button type="button" (click)="calculateBonus()">Submit</button>
+        <button type="button" (click)="calculateBonus()">Calculate</button>
+
+        <span>Your Bonus:</span>
+        <p>{{ bonus }}</p>
       </form>
     </mat-card>
   </div>

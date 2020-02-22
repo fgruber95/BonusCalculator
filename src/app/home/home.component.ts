@@ -11,18 +11,16 @@ export class HomeComponent {
 
   affiliation: number;
   specialEmployee: boolean;
+  bonus: string;
 
   constructor() {
-   
+   this.bonus = "Please click on Calculate!";
   }
 
   calculateBonus(): string {
 
     var affiliationInYears = this.affiliation;
     var specialEmployee = this.specialEmployee;
-
-      console.log(affiliationInYears);
-      console.log(specialEmployee);
 
     if (affiliationInYears > 75) {
         return "Affiliation must be under 76!";
@@ -44,11 +42,12 @@ export class HomeComponent {
         temp = temp * 2;
     }
 
+      console.log(temp);
+
       if (temp > 0) {
-        console.log(temp);
-        return temp + "%";
+        this.bonus = temp + "%";
     } else {
-        return "kein Bonus";
+        this.bonus = "kein Bonus";
     }
      
 }
