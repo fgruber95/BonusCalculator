@@ -6,56 +6,16 @@
         [sideNavOpened]="sideNavOpened"
       ></public-header>
     </mat-toolbar>
-    <div class="sidenav-container-outer">
-      <div class="sidenav-container-inner">
-        <mat-sidenav-container>
-          <mat-sidenav
-            [disableClose]="false"
-            [mode]="isMobile ? 'over' : 'side'"
-            [opened]="!isMobile || sideNavOpened"
-            #sidenav
-          >
-            <mat-nav-list>
-              <!-- Sidenav links -->
-              <a
-                id="home"
-                mat-list-item
-                [routerLink]="['./initialPage']"
-                (click)="close()"
-              >
-                <mat-icon matListAvatar>home</mat-icon>
-                <h3 matLine>{{ 'home' | translate }}</h3>
-                <p matLine class="desc">{{ 'description' | translate }}</p>
-              </a>
-              <a
-                id="sampleData"
-                mat-list-item
-                [routerLink]="['./sampleData']"
-                (click)="close()"
-              >
-                <mat-icon matListAvatar>grid_on</mat-icon>
-                <h3 matLine>
-                  {{ 'sampledatamanagement.SampleData.navData' | translate }}
-                </h3>
-                <p matLine class="desc">
-                  {{ 'sampledatamanagement.SampleData.navDataSub' | translate }}
-                </p>
-              </a>
-            </mat-nav-list>
-          </mat-sidenav>
-          <mat-sidenav-content>
-            <div class="content-container-outer">
-              <div class="content-container-inner">
-                <router-outlet></router-outlet>
-              </div>
-              <mat-toolbar class="public-footer">
-                <span>DevonFW Application</span>
-                <span>Devonfw</span>
-              </mat-toolbar>
-            </div>
-          </mat-sidenav-content>
-        </mat-sidenav-container>
-      </div>
-    </div>
+    <mat-card>
+      <form>
+        <label>Affiliation:</label>
+        <input type="text" name="affiliation" [(ngModel)]="affiliation">
+
+        <label>Special employee:</label>
+        <input type="checkbox" [(ngModel)]="specialEmployee" [ngModelOptions]="{standalone: true}" />
+
+        <button type="button" (click)="calculateBonus()">Submit</button>
+      </form>
+    </mat-card>
   </div>
 </div>

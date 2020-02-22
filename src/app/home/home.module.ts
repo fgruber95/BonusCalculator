@@ -6,7 +6,6 @@ import { CoreModule } from '../core/core.module';
 import { LayoutModule } from '../layout/layout.module';
 
 import { HomeComponent } from './home.component';
-import { InitialPageComponent } from './initial-page/initial-page.component';
 
 @NgModule({
   imports: [
@@ -17,13 +16,7 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
     TranslateModule,
   ],
   providers: [],
-  declarations: [
-    HomeComponent,
-    InitialPageComponent,
-  ],
-  exports: [
-    HomeComponent,
-    InitialPageComponent,
-  ],
+  declarations: [HomeComponent,],
+  exports: [HomeComponent,]
 })
 export class HomeModule {}

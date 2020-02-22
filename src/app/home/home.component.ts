@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 
@@ -9,23 +8,49 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  sideNavOpened: boolean = false;
-  isMobile: any;
-  constructor(private router: Router, private breakpoint: BreakpointObserver) {
-    this.breakpoint.observe(Breakpoints.Handset).subscribe((data: any) => {
-      this.isMobile = data.matches;
-    });
+
+  affiliation: number;
+  specialEmployee: boolean;
+
+  constructor() {
+   
   }
 
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
-  }
+  calculateBonus(): string {
 
-  onToggle(value: boolean): void {
-    this.sideNavOpened = value;
-  }
+    var affiliationInYears = this.affiliation;
+    var specialEmployee = this.specialEmployee;
 
-  close(): void {
-    this.sideNavOpened = false;
-  }
+      console.log(affiliationInYears);
+      console.log(specialEmployee);
+
+    if (affiliationInYears > 75) {
+        return "Affiliation must be under 76!";
+    }
+
+    var temp: number = 0;
+
+    if (affiliationInYears < 2) {
+        temp = 0;
+    } else if (affiliationInYears > 2 && affiliationInYears <= 4) {
+        temp = 50;
+    } else if (affiliationInYears > 4 && affiliationInYears <= 10) {
+        temp = 80;
+    } else if (affiliationInYears > 10) {
+        temp = 120;
+    }
+
+    if (specialEmployee) {
+        temp = temp * 2;
+    }
+
+      if (temp > 0) {
+        console.log(temp);
+        return temp + "%";
+    } else {
+        return "kein Bonus";
+    }
+     
+}
+  
 }

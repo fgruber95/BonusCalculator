@@ -40,11 +40,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkTableModule } from '@angular/cdk/table';
 import 'hammerjs';
 
-import { HttpRequestInterceptorService } from './security/httpRequestInterceptor.service';
-import { AuthGuard } from './security/auth-guard.service';
-import { AuthService } from './security/auth.service';
-import { BusinessOperationsService } from './shared/business-operations.service';
-import { LoginService } from './security/login.service';
 
 @NgModule({
   imports: [
@@ -91,15 +86,6 @@ import { LoginService } from './security/login.service';
   ],
   declarations: [],
   providers: [
-    AuthGuard,
-    LoginService,
-    AuthService,
-    BusinessOperationsService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpRequestInterceptorService,
-      multi: true,
-    },
   ],
 })
 export class CoreModule {}
