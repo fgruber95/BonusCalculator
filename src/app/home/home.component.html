@@ -5,13 +5,15 @@
     </mat-toolbar>
     <mat-card>
       <form>
-        <label>Affiliation:</label>
-        <input type="text" name="affiliation" [(ngModel)]="affiliation">
+        <mat-form-field>
+          <mat-label>Affiliation</mat-label>
+          <input matInput name="affiliation" [(ngModel)]="affiliation">
+        </mat-form-field>
 
-        <label>Special employee:</label>
-        <input type="checkbox" [(ngModel)]="specialEmployee" [ngModelOptions]="{standalone: true}" />
-
-        <button type="button" (click)="calculateBonus()">Calculate</button>
+        <mat-checkbox color="primary" [(ngModel)]="specialEmployee" name="specialEmployee">Secretary or postal worker?</mat-checkbox><br /><br />
+       
+       
+        <button mat-raised-button (click)="calculateBonus()">Calculate</button><br /><br />
 
         <span>Your Bonus:</span>
         <p>{{ bonus }}</p>

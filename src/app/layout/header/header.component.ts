@@ -7,8 +7,6 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() sideNavOpened: boolean = false;
-  @Output() toggle: EventEmitter<any> = new EventEmitter();
 
   constructor(
     public router: Router,

@@ -1,4 +1,3 @@
-import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,6 @@ import { HomeComponent } from './home.component';
     CoreModule,
     LayoutModule,
     AppRoutingModule,
-    TranslateModule,
   ],
   providers: [],
   declarations: [HomeComponent,],

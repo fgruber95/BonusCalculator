@@ -10,19 +10,19 @@ export class HomeComponent {
   affiliation: number;
   specialEmployee: boolean;
   bonus: string;
-  input: { inputObj: { affiliation: number; specialEmployee: boolean; }; };
 
   constructor() {
    this.bonus = "Please click on Calculate!";
   }
 
-  calculateBonus(): string {
+  calculateBonus(): void {
 
     var affiliationInYears = this.affiliation;
     var specialEmployee = this.specialEmployee;
 
-    if (affiliationInYears > 75) {
-        return "Affiliation must be under 76!";
+      if (affiliationInYears > 75) {
+        this.bonus = "Affiliation must be under 76!";
+        return;
     }
 
     var temp: number = 0;
@@ -41,14 +41,12 @@ export class HomeComponent {
         temp = temp * 2;
     }
 
-      console.log(temp);
 
-      if (temp > 0) {
-        this.bonus = temp + "%";
+    if (temp > 0) {
+      this.bonus = temp + "%";
     } else {
-        this.bonus = "kein Bonus";
+      this.bonus = "no Bonus";
     }
      
-}
-  
+  }
 }

@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import {
   HttpClientModule,
   HttpClientXsrfModule,
-  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';

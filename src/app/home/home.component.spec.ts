@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { HomeModule } from './home.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +9,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      imports: [HomeModule],
     })
     .compileComponents();
   }));
@@ -19,69 +20,78 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
     it('should show no Bonus', () => {
-        component.input = { inputObj: { affiliation: 1, specialEmployee: false } };
+        component.affiliation = 1;
+        component.specialEmployee = false;
         component.calculateBonus();
-        expect(fixture.nativeElement.querySelector('p').innerText).toEqual('no Bonus');
+        expect(component.bonus).toEqual('no Bonus');
     });
 
-
+    
     it('should show 50%', () => {
-        component.input = { inputObj: { affiliation: 2, specialEmployee: false } };
+        component.affiliation = 3;
+        component.specialEmployee = false;
         component.calculateBonus();
-        expect(fixture.nativeElement.querySelector('p').innerText).toEqual('50%');
+        expect(component.bonus).toEqual('50%');
     });
 
 
-    it('should show 0.8', () => {
-        component.input = { inputObj: { affiliation: 5, specialEmployee: false } };
+    it('should show 80%', () => {
+        component.affiliation = 5;
+        component.specialEmployee = false;
         component.calculateBonus();
-        expect(fixture.nativeElement.querySelector('p').innerText).toEqual(0.8);
+        expect(component.bonus).toEqual('80%');
     });
 
 
     it('should show 120%', () => {
-        component.input = { inputObj: { affiliation: 11, specialEmployee: false } };
+        component.affiliation = 11;
+        component.specialEmployee = false;
         component.calculateBonus();
-        expect(fixture.nativeElement.querySelector('p').innerText).toEqual('120%');
+        expect(component.bonus).toEqual('120%');
     });
 
 
-    //Test to check if Secretaries get double the bonus
+    //Test to check if postal workers or secretaries get double the bonus
 
     it('should show 100%', () => {
-        component.input = { inputObj: { affiliation: 2, specialEmployee: true } };
+        component.affiliation = 3;
+        component.specialEmployee = true;
         component.calculateBonus();
-        expect(fixture.nativeElement.querySelector('p').innerText).toEqual('100%');
+        expect(component.bonus).toEqual('100%');
     });
 
 
     // Test to check if people including secretaries and postal workers get zero bonuses if working less that 2 years 
-    it('should show 0%', () => {
-        component.input = { inputObj: { affiliation: 1, specialEmployee: true } };
+    it('should show no Bonus', () => {
+        component.affiliation = 1;
+        component.specialEmployee = true;
         component.calculateBonus();
-        expect(fixture.nativeElement.querySelector('div').innerText).toEqual('no Bonus');
+        expect(component.bonus).toEqual('no Bonus');
     });
 
 
     //Test to Check Plausibility test for postal workers and secretaries
 
-    it('should show ERROR', () => {
-        component.input = { inputObj: { affiliation: 77, specialEmployee: true } };
+    it('should show error message', () => {
+        component.affiliation = 77;
+        component.specialEmployee = true;
         component.calculateBonus();
-        expect(() => fixture.detectChanges()).toThrowError('MyComponent: Affiliation must be under 76!.');
+        expect(component.bonus).toEqual('Affiliation must be under 76!');
     });
 
-    //Also for regular employees
+    //Test to Check Plausibility test for regular employees
 
-    it('should show ERROR', () => {
-        component.input = { inputObj: { affiliation: 77, specialEmployee: false } };
+    it('should show error message', () => {
+        component.affiliation = 77;
+        component.specialEmployee = false;
         component.calculateBonus();
-        expect(() => fixture.detectChanges()).toThrowError('MyComponent: Affiliation must be under 76!.');
+        expect(component.bonus).toEqual('Affiliation must be under 76!');
     });
+    
 });
 
